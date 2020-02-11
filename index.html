@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+     <script>
+         
+       function myFunction() 
+         {
+             var num = 19;
+             var startday = 6;
+             var daysMonth  = new Date(2020, 2, 0).getDate();
+               var week =
+        "<tr id=\"week\"> <td class=\"wk\">Mon</td><td class=\"wk\">Tue</td><td class=\"wk\">Wed</td> <td class=\"wk\">Thu</td><td class=\"wk\">Fri</td> <td class=\"wk\">Sat</td><td class=\"wk\">Sun</td></tr>";
+                var text = week+"<tr>";
+                var day = 1;
+                for(var idx = 1;day <= daysMonth;idx++)
+                {
+                    
+                    //alert(idx);
+                    if(idx == startday || startday == -1)
+                        {
+                        
+                       
+                            if(num == day)
+                            text +="<td class=\"off\">";
+                            else
+                           text +="<td class=\"days\">" ;
+                        text += day+"</td>";
+                            
+                        day++;
+                        startday = -1;
+                        //idx=1;
+                        }
+                    else
+                        {                  
+                            text +="<td class=\"day\"></td>";
+                        }
+                        
+                    if(idx % 7 == 0)
+                        text+= "</tr><tr>"
+                }
+                document.getElementById("monthdays").innerHTML = text;
+            }
+         
+    </script>
+
+    
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+    <h1>
+        Booking
+    </h1>
+<body onload="myFunction()">
+    <table id="header">
+    <tr class="month">
+        <td align="center">«</td>
+         <td id="monthtext"></td>
+         <td align="center">»</td>
+    </tr>
+    </table>
+    <table id="monthdays">
+        
+    
+   
+    </table>
+    
+</body>
+
+</html>
