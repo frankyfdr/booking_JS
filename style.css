@@ -1,0 +1,32 @@
+#header{
+    height: 10%;
+}
+
+table{
+    width: 500px;
+    height: 400px;
+    border: 1px solid;
+    table-layout: fixed;
+}
+td,tr{
+    border: 1px solid;
+    
+}
+.month{
+    height: 40px;
+}
+#monthtext{
+    width: 90%;
+}
+#week{
+    height: 10%;
+    width: 100px;
+}
+.wk{
+    width: 40px;
+    height: 30px;
+}
+.off{
+    background-color: red;
+    color:white;
+}
