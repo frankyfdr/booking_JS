@@ -7,16 +7,19 @@ table{
     height: 400px;
     border: 1px solid;
     table-layout: fixed;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 td,tr{
-    border: 1px solid;
-    
+
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    margin: 20px;
 }
 .month{
     height: 40px;
 }
 #monthtext{
     width: 90%;
+    text-align: center;
 }
 #week{
     height: 10%;
@@ -29,4 +32,35 @@ td,tr{
 .off{
     background-color: red;
     color:white;
+    cursor: not-allowed;
+}
+.DayInfo{
+     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    top: 90px;
+    left: 550px;
+    
+}
+.time{
+    margin-top: 20px;
+    width: 100px;
+}
+.days:hover{
+    transition: 0.5s;
+    background-color:  grey;
+    opacity: 0.4;
+    color:white;
+}
+.btnOK{
+    position: absolute;
+    text-decoration: none;
+    background-color: darkseagreen;
+    color:white;
+    border-radius: 10px;
+    right: 10px;
+    bottom: 10px;
+    width: 100px;
+    height: 30px;
 }

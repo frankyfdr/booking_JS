@@ -4,41 +4,77 @@
 <head>
 
      <script>
+         const getDaysInMonth = date =>
+             new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+             
          
-       function myFunction() 
+        function daySelect(day,status)
          {
-             var num = 19;
+             document.getElementById("bookDay").innerHTML ="Day  "+day;
+             
+             
+         }
+         
+     
+       function myFunction(click) 
+         {
+              
+             if(click == null)
+                 month = new Date().getMonth();
+             else
+                 month = new Date().getMonth()+click;
+             
+             console.log(month);
+             
+             var num = [1,10,11,13,29,12];
              var startday = 6;
-             var daysMonth  = new Date(2020, 2, 0).getDate();
+             var daysMonth  = getDaysInMonth(new Date(2020, month));
+             console.log()
                var week =
         "<tr id=\"week\"> <td class=\"wk\">Mon</td><td class=\"wk\">Tue</td><td class=\"wk\">Wed</td> <td class=\"wk\">Thu</td><td class=\"wk\">Fri</td> <td class=\"wk\">Sat</td><td class=\"wk\">Sun</td></tr>";
                 var text = week+"<tr>";
                 var day = 1;
+             
+             
                 for(var idx = 1;day <= daysMonth;idx++)
                 {
-                    
-                    //alert(idx);
+                   
                     if(idx == startday || startday == -1)
                         {
-                        
-                       
-                            if(num == day)
-                            text +="<td class=\"off\">";
-                            else
-                           text +="<td class=\"days\">" ;
-                        text += day+"</td>";
+                        var isoff = false;
+                        num.forEach(function(element){
+                             
+                            if(element == day)
+                                {
+                                    isoff= true;
+                                   
+                                }
+                           
+                             })
+                            if(isoff==true)
+                                 text +="<td id=\"day\" class=\"off\">";
+                                 else
+                                    text +="<td id=\"day\" onclick=\"daySelect("+day+",'free')\" class=\"days\">" ;
+
                             
-                        day++;
-                        startday = -1;
-                        //idx=1;
+                                text += day+"</td>";
+                                day++;
+                            
+                            if(idx % 7 == 0)
+                                {
+                                    text+= "</tr><tr>";
+                                    
+                                }
+
+                                startday = -1;
                         }
                     else
                         {                  
                             text +="<td class=\"day\"></td>";
+                          
                         }
                         
-                    if(idx % 7 == 0)
-                        text+= "</tr><tr>"
+                    
                 }
                 document.getElementById("monthdays").innerHTML = text;
             }
@@ -51,12 +87,12 @@
     <h1>
         Booking
     </h1>
-<body onload="myFunction()">
+<body onload="myFunction(+1)">
     <table id="header">
     <tr class="month">
-        <td align="center">«</td>
-         <td id="monthtext"></td>
-         <td align="center">»</td>
+        <td align="center" onclick="myFunction('1')">«</td>
+         <td id="monthtext">Feb</td>
+         <td align="center" onclick="myFunction('2')">»</td>
     </tr>
     </table>
     <table id="monthdays">
@@ -65,6 +101,21 @@
    
     </table>
     
+    <div class="DayInfo">
+        <form>
+           <label id="bookDay"></label>
+            <br>
+        Time: 
+            <select class="time" name="time">
+              <option value="9:00">9:00</option>
+              <option value="10:00">10:00</option>
+              <option value="11:00">11:00</option>
+              <option value="12:00">12:00</option>
+               
+        </select>
+        <input type="button" class="btnOK" value="Confirm"/>
+        </form>
+    </div>
 </body>
 
 </html>
